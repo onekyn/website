@@ -1,0 +1,118 @@
+
+
+:root {
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --container-width: 800px;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--spacing-lg);
+    max-width: var(--container-width);
+    margin: 0 auto;
+    gap: var(--spacing-lg);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+    line-height: 1.2;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid #ccc;
+}
+
+#identity {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+}
+
+#logo {
+    font-size: 2rem;
+}
+
+#name {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+nav li,
+footer li {
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav a,
+footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+nav a:hover,
+footer a:hover {
+    text-decoration: underline;
+}
+
+#introduction {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    font-size: 0.9rem;
+    color: #666;
+    border-top: 1px solid #ccc;
+}
+
+footer ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 0;
+}
+
+pre {
+    background-color: #f0f0f0;
+    padding: var(--spacing-sm);
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.math {
+    font-style: italic;
+}
