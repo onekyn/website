@@ -1,10 +1,19 @@
-
-
 :root {
     --spacing-sm: 1rem;
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
     --container-width: 800px;
+
+    --color-background: #f8f5f0;
+    --color-text: #352c24;
+    --color-text-light: rgba(53, 44, 36, 0.7);
+    --color-accent-primary: #c84e32;
+    --color-accent-secondary: #345c72;
+    --color-border: rgba(53, 44, 36, 0.2);
+
+    --font-serif: Georgia, serif;
+    --font-sans: Arial, Helvetica, sans-serif;
+    --font-mono: "Courier New", Courier, monospace;
 }
 
 html,
@@ -16,13 +25,28 @@ body {
 body {
     display: flex;
     flex-direction: column;
-    padding: 0 var(--spacing-lg);
+    padding: var(--spacing-lg);
     max-width: var(--container-width);
     margin: 0 auto;
     gap: var(--spacing-lg);
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    font-family: var(--font-serif);
     font-size: 18px;
     line-height: 1.6;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f8f8f8, #ffffff);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: -1;
 }
 
 h1,
@@ -31,10 +55,20 @@ h3,
 h4,
 h5,
 h6 {
+    color: var(--color-text);
+    font-family: var(--font-serif);
     font-weight: bold;
     line-height: 1.2;
     margin-top: var(--spacing-lg);
     margin-bottom: var(--spacing-sm);
+}
+
+h2::before {
+    content: "*";
+    color: var(--color-accent-secondary);
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    opacity: 0.7;
 }
 
 p {
@@ -46,7 +80,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 #identity {
@@ -64,26 +100,45 @@ header {
     font-weight: bold;
 }
 
-nav li,
-footer li {
-    display: inline-block;
-    list-style-type: none;
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
 }
 
-nav a,
-footer a {
-    color: inherit;
+nav a {
+    color: var(--color-text);
     text-decoration: none;
+    font-family: var(--font-serif);
 }
 
-nav a:hover,
-footer a:hover {
-    text-decoration: underline;
+nav a:hover {
+    color: var(--color-accent-primary);
 }
 
 #introduction {
     text-align: center;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 2rem;
+}
+
+#introduction h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#introduction p {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+}
+
+#introduction::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: var(--color-border);
+    margin: 1rem auto;
 }
 
 main {
@@ -92,8 +147,8 @@ main {
 
 footer {
     font-size: 0.9rem;
-    color: #666;
-    border-top: 1px solid #ccc;
+    color: var(--color-text-light);
+    border-top: 1px solid var(--color-border);
 }
 
 footer ul {
@@ -103,6 +158,20 @@ footer ul {
     padding: 0;
 }
 
+footer li {
+    display: inline-block;
+    list-style-type: none;
+}
+
+footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
 pre {
     background-color: #f0f0f0;
     padding: var(--spacing-sm);
@@ -110,7 +179,7 @@ pre {
 }
 
 code {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: var(--font-mono);
 }
 
 .math {
