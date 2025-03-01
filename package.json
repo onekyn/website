@@ -1,0 +1,21 @@
+{
+  "name": "kyn-ez.github.io",
+  "version": "1.0.0",
+  "description": "My own personal website",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "start": "npx @11ty/eleventy --serve --quiet"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  },
+  "author": "kynez",
+  "license": "MIT",
+  "homepage": "kyn-ez.github.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyn-ez/kyn-ez.github.io.git"
+  }
+}
