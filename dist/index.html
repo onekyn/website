@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kynez's home on the web">
+    <link rel="canonical" href="https://kyn-ez.github.io">
+
+    <!-- Custom styling -->
+    <link rel="stylesheet" href="/styles.css">
+
+    <!-- Math Rendering with KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script>
+
+    <title>Kynez</title>
+</head>
+
+<body>
+    <header>
+        <div id="identity">
+            <span id="logo">λ</span>
+            <small id="name">Kynez</small>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="introduction">
+        <h1>Welcome to my digital garden!</h1>
+        <p>A personal space for ideas and explorations in computer science.</p>
+    </div>
+
+    <main>
+        <section>
+            <h2>About Me</h2>
+            <p>
+                I'm an Italian developer studying deep learning and information retrieval systems.
+                Not an expert by any means but always willing to learn more and share what I discover along the way.
+                My background is in computer science with a particular interest in how machines understand and process
+                information.
+            </p>
+        </section>
+
+        <section>
+            <h2>Areas of Interest</h2>
+            <p>My current focus is primarily on these interconnected areas:</p>
+            <ul>
+                <li><strong>Mechanistic Interpretability</strong> — Understanding the inner workings of neural networks
+                    beyond the black box approach.</li>
+                <li><strong>Deep Learning on Resource-Contrained Environments</strong> — Exploring efficient algorithms
+                    and model compression techniques.</li>
+                <li><strong>Distributed Learning</strong> — Investigating approaches to train and deploy models across
+                    multiple devices.</li>
+            </ul>
+        </section>
+
+        <section>
+            <blockquote>
+                Besides a mathematical inclination, an exceptionally good mastery
+                of one's native tongue is the most vital asset of a competent programmer.
+                <cite>Edsger W. Dijkstra</cite>
+            </blockquote>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li><a href="mailto:kynez.dev@gmail.com">Email</a></li>
+            <li><a href="https://github.com/kyn-ez">GitHub</a></li>
+            <li><a href="https://x.com/kyn_ez">Twitter</a></li>
+        </ul>
+    </footer>
+
+    <!-- Automatically render math expressions -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "$", right: "$", display: false }
+                ],
+                throwOnError: false
+            });
+        });
+    </script>
+</body>
+
+</html>
