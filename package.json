@@ -1,5 +1,5 @@
 {
-  "name": "kyn-ez.github.io",
+  "name": "onekyn.github.io",
   "version": "1.0.0",
   "description": "My own personal website",
   "type": "module",
@@ -11,11 +11,11 @@
   "dependencies": {
     "@11ty/eleventy": "^3.0.0"
   },
-  "author": "kynez",
+  "author": "kyn",
   "license": "MIT",
-  "homepage": "kyn-ez.github.io",
+  "homepage": "onekyn.github.io",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kyn-ez/kyn-ez.github.io.git"
+    "url": "git+https://github.com/onekyn/onekyn.github.io.git"
   }
 }
