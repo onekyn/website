@@ -1,21 +1,22 @@
 {
-  "name": "onekyn.github.io",
+  "name": "onekyn-website",
   "version": "1.0.0",
   "description": "My own personal website",
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "npx @11ty/eleventy",
-    "start": "npx @11ty/eleventy --serve --quiet"
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "clean": "rm -rf dist"
   },
-  "dependencies": {
-    "@11ty/eleventy": "^3.0.0"
-  },
-  "author": "kyn",
+  "author": "onekyn",
   "license": "MIT",
-  "homepage": "onekyn.github.io",
+  "homepage": "onekyn.pages.dev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/onekyn/onekyn.github.io.git"
+    "url": "git+https://github.com/onekyn/website.git"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
   }
 }

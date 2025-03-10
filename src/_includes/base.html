@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | onekyn</title>
+
+    <!-- Custom styling -->
+    <link rel="stylesheet" href="/public/base.css">
+
+    <!-- Math Rendering with KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <div id="identity">
+        <span id="logo">&lambda;</span>
+        <small id="name">onekyn</small>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="introduction">
+      <h1>{{ title }}</h1>
+      <p>{{ description }}</p>
+    </div>
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer>
+      <ul>
+        <li><a href="mailto:kynez.dev@gmail.com">Email</a></li>
+        <li><a href="https://github.com/onekyn">GitHub</a></li>
+        <li><a href="https://x.com/onekyn">Twitter</a></li>
+      </ul>
+    </footer>
+
+    <!-- Automatically render math expressions -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+          renderMathInElement(document.body, {
+              delimiters: [
+                  { left: "$$", right: "$$", display: true },
+                  { left: "$", right: "$", display: false }
+              ],
+              throwOnError: false
+          });
+      });
+    </script>
+  </body>
+
+</html>
