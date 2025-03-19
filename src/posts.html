@@ -1,0 +1,15 @@
+---
+title: Articles
+layout: base.html
+---
+
+<section>
+  <ul id="posts-list">
+    {% for post in collections.post | reverse %}
+      <li class="post-item">
+        <a href="{{ post.url }}"><strong>{{ post.data.title }}</strong></a>
+        <p>{{ post.data.description }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</section>

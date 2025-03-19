@@ -1,25 +1,52 @@
+/**
+ * A Minimal, Elegant and Neobrutalist Theme
+ */
+
+/* ==============================
+   1. CSS VARIABLES / THEME
+   ============================== */
 :root {
     /* Layout */
+    --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
     --container-width: 700px;
     --line-length: 66ch;
 
-    /* Minimal and elegant colorscheme */
-    --color-background: #f3f3f3;
-    --color-background-alt: #f0f0f0;
-    --color-text: #22222;
-    --color-text-light: rgba(34, 34, 34, 0.8);
-    --color-accent-primary: #8c1515;
-    --color-border: rgba(34, 34, 34, 0.15);
+    /* Colorscheme */
+    --color-background: #fffef9;
+    --color-background-alt: #f0f0e8;
+    --color-text: #111111;
+    --color-text-light: rgba(17, 17, 17, 0.8);
+    --color-accent-primary: #5daa8f;
+    --color-border: rgba(17, 17, 17, 0.25);
 
     /* Typography */
-    --font-serif: Georgia, serif;
-    --font-sans: Arial, Helvetica, sans-serif;
-    --font-mono: "Courier New", Courier, monospace;
+    --font-serif: "IBM Plex Serif", Georgia, serif;
+    --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", monospace;
+
+    /* Neobrutalist elements */
+    --shadow-offset: 4px;
+    --border-width: 2px;
+    --border-radius: 0;
 }
 
+/* Dark Theme Colorscheme */
+.dark-theme {
+    --color-background: #111111;
+    --color-background-alt: #1a1a1a;
+    --color-text: #f0f0f0;
+    --color-text-light: rgba(240, 240, 240, 0.8);
+    --color-accent-primary: #52b788;
+    --color-border: rgba(240, 240, 240, 0.25);
+}
+
+/* ==============================
+   2. BASE ELEMENTS
+   ============================== */
 html,
 body {
     height: 100%;
@@ -41,34 +68,38 @@ body {
     text-rendering: optimizeLegibility;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     color: var(--color-text);
     font-family: var(--font-serif);
     font-weight: 500;
     line-height: 1.2;
     margin-top: var(--spacing-lg);
     margin-bottom: var(--spacing-sm);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
 }
 
 h1 {
     font-size: 2.2rem;
     margin-top: 0;
+    font-family: var(--font-mono);
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    border-bottom: var(--border-width) solid var(--color-border);
 }
 
-/* Asterist decoration */
+/* Asterisk decoration */
 h2::before {
-    content: "*";
+    content: "* ";
     color: var(--color-accent-primary);
-    font-size: 1.5rem;
+    font-family: var(--font-mono);
     font-weight: normal;
-    margin-right: 0.5rem;
-    opacity: 0.7;
+    opacity: 0.8;
+}
+
+h2 {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 p {
@@ -81,19 +112,25 @@ p {
 a {
     color: var(--color-accent-primary);
     text-decoration: none;
-    border-bottom: 2px solid rgba(140, 21, 21, 0.2);
-    transition: border-color 0.5s ease;
+    border-bottom: var(--border-width) solid rgba(45, 106, 79, 0.3);
+    transition: all 0.2s ease;
+    padding: 0 2px;
 }
 
 a:hover {
     border-bottom-color: var(--color-accent-primary);
+    background-color: rgba(45, 106, 79, 0.1);
+    box-shadow: 2px 2px 0 var(--color-border);
 }
 
+/* ==============================
+   3. LAYOUT COMPONENTS
+   ============================== */
 header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--border-width) solid var(--color-border);
     padding-bottom: 1rem;
     margin-bottom: 2rem;
 }
@@ -111,9 +148,11 @@ header {
 }
 
 #name {
+    font-family: var(--font-mono);
     font-size: 1.2rem;
     font-weight: normal;
     letter-spacing: 0.05em;
+    text-transform: lowercase;
 }
 
 nav ul {
@@ -126,38 +165,86 @@ nav ul {
 nav a {
     color: var(--color-text);
     text-decoration: none;
-    font-family: var(--font-serif);
-    border-bottom: none;
+    font-family: var(--font-mono);
+    border-bottom: var(--border-width) solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+}
+
+nav a:hover {
+    border-bottom-color: var(--color-accent-primary);
+    background-color: transparent;
+    box-shadow: none;
+}
+
+#theme-toggle {
+    background: none;
+    border: var(--border-width) solid var(--color-border);
+    background-color: var(--color-background-alt);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: var(--border-radius);
+    width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
     position: relative;
+    overflow: hidden;
 }
 
-nav a::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
+#theme-toggle:hover {
     background-color: var(--color-accent-primary);
-    transition: width 0.5s ease;
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 0 var(--color-border);
 }
 
-nav a:hover::after {
-    width: 100%;
+#theme-toggle:active {
+    transform: translateY(0);
+    box-shadow: 1px 1px 0 var(--color-border);
+}
+
+#light-icon, #dark-icon {
+    font-size: 1.2rem;
+    position: absolute;
+    transition: transform 0.3s ease;
+    color: var(--color-text-light)
+}
+
+.dark-theme #light-icon {
+    transform: translateY(-150%);
+}
+
+.dark-theme #dark-icon {
+    transform: translateY(0);
+}
+
+html:not(.dark-theme) #light-icon {
+    transform: translateY(0);
+}
+
+html:not(.dark-theme) #dark-icon {
+    transform: translateY(150%);
 }
 
 #introduction {
-    text-align: center;
-    margin-bottom: 3rem;
-    max-width: 85%;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: left;
+    margin-bottom: var(--spacing-xl);
+    border: var(--border-width) solid var(--color-border);
+    padding: var(--spacing-md);
+    position: relative;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-border);
 }
 
 #introduction h1 {
     font-size: 2.2rem;
     font-weight: normal;
     margin-bottom: 0.5rem;
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 #introduction p {
@@ -167,19 +254,35 @@ nav a:hover::after {
     line-height: 1.5;
 }
 
+#introduction::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 10px;
+    height: 10px;
+    border: var(--border-width) solid var(--color-border);
+    background-color: var(--color-accent-primary);
+}
+
 #introduction::after {
     content: "";
-    display: block;
-    width: 100px;
-    height: 2px;
-    background-color: var(--color-border);
-    margin: 2rem auto;
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 10px;
+    height: 10px;
+    border: var(--border-width) solid var(--color-border);
+    background-color: var(--color-accent-primary);
 }
 
 main {
     flex: 1;
 }
 
+/* ==============================
+   4. CONTENT ELEMENTS
+   ============================== */
 ul,
 ol {
     padding-left: 1.5rem;
@@ -191,13 +294,55 @@ li {
     max-width: var(--line-length);
 }
 
+#posts-list {
+    list-style: none;
+    padding: 0;
+}
+
+.post-item {
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    border: var(--border-width) solid var(--color-border);
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-border);
+}
+
+.post-item:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0 var(--color-border);
+}
+
+.post-item:last-child {
+    margin-bottom: 0;
+}
+
+.post-item a {
+    border-bottom: none;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    padding: 0;
+}
+
+.post-item a:hover {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.post-item p {
+    margin-top: var(--spacing-xs);
+    margin-bottom: 0;
+}
+
 pre {
     background-color: var(--color-background-alt);
-    border: 2px solid var(--color-border);
+    border: var(--border-width) solid var(--color-border);
     padding: var(--spacing-sm);
     overflow-x: auto;
     margin-bottom: var(--spacing-md);
-    box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.03);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-border);
+    font-family: var(--font-mono);
 }
 
 code {
@@ -206,7 +351,7 @@ code {
     font-family: var(--font-mono);
     font-size: 0.9em;
     padding: 0.1em 0.3em;
-    border-radius: 3px;
+    border: 1px solid var(--color-border);
     font-feature-settings: "liga" 0;
 }
 
@@ -214,14 +359,20 @@ pre code {
     background-color: transparent;
     color: var(--color-text);
     padding: 0;
+    border: none;
 }
 
 blockquote {
     margin: 0 0 var(--spacing-md) 0;
-    padding: 0 var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-md);
     border-left: 3px solid var(--color-accent-primary);
+    border-top: var(--border-width) solid var(--color-border);
+    border-bottom: var(--border-width) solid var(--color-border);
+    border-right: var(--border-width) solid var(--color-border);
     color: var(--color-text-light);
+    background-color: var(--color-background-alt);
     font-style: italic;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-border);
 }
 
 blockquote cite {
@@ -230,6 +381,7 @@ blockquote cite {
     text-align: right;
     margin-top: var(--spacing-sm);
     font-style: normal;
+    font-family: var(--font-mono);
 }
 
 blockquote cite::before {
@@ -243,35 +395,42 @@ figure {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0.5rem;
+    padding: var(--spacing-sm);
     background-color: var(--color-background-alt);
-    border: 2px solid var(--color-border);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    border: var(--border-width) solid var(--color-border);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-border);
 }
 
 figure img {
     max-width: 100%;
     height: auto;
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--spacing-xs);
+    border: 1px solid var(--color-border);
 }
 
 figcaption {
     color: var(--color-text-light);
     font-size: 0.85em;
     font-style: normal;
-    margin-top: 0.5rem;
+    margin-top: var(--spacing-xs);
     text-align: center;
-    border-top: 2px solid var(--color-border);
-    padding-top: 0.5rem;
+    border-top: var(--border-width) solid var(--color-border);
+    padding-top: var(--spacing-xs);
     width: 90%;
+    font-family: var(--font-mono);
 }
 
+/* ==============================
+   5. FOOTER
+   ============================== */
 footer {
     font-size: 0.9rem;
     color: var(--color-text-light);
-    border-top: 2px solid var(--color-border);
+    border-top: var(--border-width) solid var(--color-border);
     padding-top: var(--spacing-md);
     margin-top: var(--spacing-lg);
+    text-align: center;
+    font-family: var(--font-mono);
 }
 
 footer ul {
@@ -292,14 +451,22 @@ footer li {
 footer a {
     color: inherit;
     text-decoration: none;
-    border-bottom: 2px solid transparent;
+    border-bottom: var(--border-width) solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.8rem;
 }
 
 footer a:hover {
-    border-bottom-color: var(--color-text-light);
+    color: var(--color-accent-primary);
+    border-bottom-color: var(--color-accent-primary);
+    background-color: transparent;
+    box-shadow: none;
 }
 
-/* Responsive adjustments */
+/* ==============================
+   6. RESPONSIVE STYLES
+   ============================== */
 @media (max-width: 700px) {
     body {
         padding: var(--spacing-md);
@@ -319,24 +486,56 @@ footer a:hover {
     #introduction {
         max-width: 100%;
     }
+
+    .post-item {
+        padding: var(--spacing-sm);
+    }
 }
 
-/* Print styles */
+/* ==============================
+   7. PRINT STYLES
+   ============================== */
 @media print {
     body {
         font-size: 12pt;
         line-height: 1.5;
         background: none;
         color: black;
+        margin: 0;
+        padding: 0;
+    }
+
+    #introduction,
+    .post-item,
+    blockquote,
+    pre,
+    figure {
+        box-shadow: none;
+        border: 1pt solid #999;
     }
 
     a {
         color: black;
-        text-decoration: underline;
-        border-bottom: none;
+        text-decoration: none;
+        border-bottom: 1pt dotted #555;
     }
 
-    nav, footer {
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        font-style: italic;
+    }
+
+    nav, footer, #theme-toggle {
         display: none;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        break-after: avoid;
+        break-inside: avoid;
+    }
+
+    img, figure {
+        break-inside: avoid;
     }
 }
